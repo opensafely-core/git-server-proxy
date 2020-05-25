@@ -8,8 +8,6 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: opensafely/git-server-docker/app
-        registry: docker.pkg.github.com
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        buildargs:
+        name: opensafely/git-server-proxy
+        username: opensafely
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
