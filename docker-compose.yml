@@ -1,0 +1,13 @@
+version: "3.6"
+services:
+  git-server:
+    image: docker.pkg.github.com/opensafely/git-server-docker/app
+    #build: .
+    restart: always
+    container_name: git-server
+    ports:
+      - "2222:22"
+    volumes:
+      - ./read-only-keys:/git-server/read-only-keys
+      - ./read-write-keys:/git-server/read-write-keys
+      - ./repos:/git-server/repos

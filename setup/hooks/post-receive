@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""A hook that forwards pushes onto the corresponding opensafely repo
+
+"""
+
+import subprocess
+
+
+if __name__ == "__main__":
+    print(f"Pushing to origin")
+    subprocess.run(["git", "push", "origin"], check=True)

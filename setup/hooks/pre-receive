@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+"""
+A hook that only allows pushes from username `git-read-write`
+
+From the documentation:
+
+This hook is invoked by git-receive-pack[1] when it reacts to git
+push and updates reference(s) in its repository. Just before starting
+to update refs on the remote repository, the pre-receive hook is
+invoked. Its exit status determines the success or failure of the
+update.
+
+If the hook exits with non-zero status, none of the refs will be
+updated. If the hook exits with zero, updating of individual refs can
+still be prevented by the update hook.
+
+"""
+
+
+import os
+import pwd
+import subprocess
+
+if __name__ == "__main__":
+    username = pwd.getpwuid(os.getuid()).pw_name
+    if username == "git-read-write":
+        # permitted to push
+        pass
+    else:
+        raise PermissionError("user {} is not permitted to push".format(username))
