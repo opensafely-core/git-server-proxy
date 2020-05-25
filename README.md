@@ -1,4 +1,4 @@
-# git-server-docker
+# Git Server Proxy
 
 A Docker image that provides a Git SSH proxy server for the OpenSAFELY
 project, suitable for installing in a DMZ.
