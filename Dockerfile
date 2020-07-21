@@ -8,8 +8,16 @@ RUN apk add --no-cache \
 # Generate the server's public/private key pair.
 RUN ssh-keygen -A
 RUN mkdir /git-server/
+
+RUN mkdir /root/.ssh
+
 COPY setup /setup
 WORKDIR /setup
+
+# This config allows SSH access to github via port 443
+RUN cp /setup/ssh-config /root/.ssh/config
+RUN chmod -R 700 /root/.ssh/
+
 RUN ls -l make_git_user.sh
 # Set up two users.  The ability of `git-read-only` to push is
 # suppressed by git hooks

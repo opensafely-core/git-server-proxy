@@ -73,6 +73,10 @@ which you should do now:
 
 This is now running, but without public keys set up, and no mirrored repos.
 
+## Check your firewall
+
+The server needs access to `github.com`, port `443`
+
 ## Mirror a new repo
 
 To set up a mirror of a new repo, clone it thus:
