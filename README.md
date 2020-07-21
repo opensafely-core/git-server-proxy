@@ -56,6 +56,14 @@ Second, the `post-receive` hook handles forwarding any successful
 Create three directories: `read-only-keys/`, `read-write-keys/`, and
 `repos/`.  These will not hold highly-sensitive information.
 
+Create another directory, `master-key/`, which will hold sensitive
+information, and should be protected accordingly (the docker user will
+need read access to it).
+
+Copy a private SSH key to `master-key/id_rsa` whose public key
+corresponds with a Github account which has read/write access to all
+the repos you wish to proxy.
+
 Edit `docker-compose.yml` so the `volumes` point to these locations
 (i.e. change the part before each colon). The default is for them to
 be subdirectories of the current directory when you start docker,

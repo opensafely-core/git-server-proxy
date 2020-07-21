@@ -8,6 +8,12 @@ if [ "$(ls -A /git-server/read-write-keys/)" ]; then
   cat /git-server/read-write-keys/*.pub > /home/git-read-write/.ssh/authorized_keys
 fi
 
+# Copy the master user key to the correct place
+mkdir -p /root/.ssh
+cp /git-server/master-key/id_rsa /root/.ssh/id_rsa
+chmod -R 700 /root/.ssh
+
+
 # Check permissions and fix-up the SGID bit in the repos folder.
 # More info: https://github.com/jkarlosb/git-server-docker/issues/1
 if [ "$(ls -A /git-server/repos/)" ]; then

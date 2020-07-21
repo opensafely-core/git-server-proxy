@@ -10,4 +10,4 @@ services:
     volumes:
       - ./read-only-keys:/git-server/read-only-keys
       - ./read-write-keys:/git-server/read-write-keys
-      - ./repos:/git-server/repos
+      - ./master-key:/git-server/master-key
